@@ -4,7 +4,6 @@ import { render, fireEvent, cleanup } from '@testing-library/react'
 import App from '../src/App'
 
 afterEach(cleanup)
-// const component = render(<App />)
 
 describe('App component loads correctly', () => {
 	const { container } = render(<App />)
@@ -43,5 +42,25 @@ describe('State is managed correctly', () => {
 
 		fireEvent.click(minus)
 		expect(count.innerHTML).toBe("-1")
+	})
+
+ it('should add 2 to count', () => {
+		const { getByTestId } = render(<App />)
+		const count = getByTestId(`count`)
+		const add = getByTestId(`addCount`)
+
+		fireEvent.click(add)
+		fireEvent.click(add)
+		expect(count.innerHTML).toBe("2")
+	})
+
+	it('should minus 2 from count', () => {
+		const { getByTestId } = render(<App />)
+		const count = getByTestId(`count`)
+		const minus = getByTestId(`minusCount`)
+
+		fireEvent.click(minus)
+		fireEvent.click(minus)
+		expect(count.innerHTML).toBe("-2")
 	})
 })
