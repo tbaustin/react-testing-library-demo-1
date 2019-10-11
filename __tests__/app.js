@@ -4,7 +4,6 @@ import { render, fireEvent, cleanup } from '@testing-library/react'
 import App from '../src/App'
 
 afterEach(cleanup)
-// const component = render(<App />)
 
 describe('App component loads correctly', () => {
 	const { container } = render(<App />)
